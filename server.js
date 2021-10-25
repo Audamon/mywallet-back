@@ -3,6 +3,7 @@ import cors from 'cors';
 import bcrypt from 'bcrypt';
 import { v4 as uuid } from 'uuid';
 import connection from './database.js';
+import { val } from './validate.js';
 const server = express();
 server.use(cors());
 server.use(express.json());
@@ -10,6 +11,12 @@ server.use(express.json());
 server.post('/signup', async (req, res) => {
     const { username, email, password } = req.body;
     const balance = 0;
+    const errors = val.validate({
+        username, email, password
+    }).error;
+    if(errors){
+       return res.sendStatus(400);
+    }
     try {
         const hash = bcrypt.hashSync(password, 12);
         const validEmail = await connection.query(`SELECT * FROM customers WHERE email = $1`,[email]);
