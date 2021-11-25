@@ -1,10 +1,14 @@
 import bcrypt from 'bcrypt';
 import { v4 as uuid } from 'uuid';
 import connection from '../database.js';
+import { signInSchema } from '../Schemas/schemas.js';
 
 async function signIn(req, res) {
   const { email, password } = req.body;
-
+  const validate = signInSchema.validate(req.body);
+  if (validate.error) {
+    return res.sendStatus(400);
+  }
   try {
     const user = await connection.query(
       `
@@ -12,6 +16,9 @@ async function signIn(req, res) {
           `,
       [email]
     );
+    if(user.rowCount === 0){
+      return res.sendStatus(401 );
+    }
     const hash = bcrypt.compareSync(password, user.rows[0].password);
     if (!hash) {
       return res.sendStatus(401);
