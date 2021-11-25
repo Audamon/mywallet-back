@@ -1,1 +1,7 @@
 node_modules/
+
+.eslintrc.json
+.prettierrc.json
+
+.env.test
+.env.dev
