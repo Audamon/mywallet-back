@@ -1,3 +1,4 @@
+import './setup.js';
 import server from './server.js';
 
-server.listen(4000);
+server.listen(process.env.PORT);
