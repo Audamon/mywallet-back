@@ -37,3 +37,21 @@ describe('POST /transaction/in', () => {
         expect(result.status).toEqual(201);
     });
 });
+describe('POST /transaction/out', () => {
+    test('retuen 401 when token is invalid', async () => {
+        const body = {
+            value: 2000, 
+            description: 'teste',
+        }
+        const result = await supertest(server).post('/transactions/out').send(body).set("Authorization", `Bearer `);
+        expect(result.status).toEqual(401);
+    });
+    test('return 201 when the transaction occurs', async () => {
+        const body = {
+            value: 2000, 
+            description: 'teste',
+        }
+        const result = await supertest(server).post('/transactions/out').send(body).set("Authorization", `Bearer ${token}`)
+        expect(result.status).toEqual(201);
+    });
+});
