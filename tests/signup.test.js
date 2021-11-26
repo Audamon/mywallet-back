@@ -6,6 +6,7 @@ import {
   validBodyFactorySignup, invalidBodyFactorySignup,
 } from '../Factories/factories.js';
 
+const testBody = validBodyFactorySignup();
 afterAll(async () => {
     await connection.query('delete from customers');
 });
@@ -17,7 +18,6 @@ describe('POST /signup', () => {
       const status = result.status;
       expect(status).toEqual(400);
     });
-    const testBody = validBodyFactorySignup();
     it('return 200 for valid data', async () => {
       const result = await supertest(server).post('/signup').send(testBody);
       const status = result.status;
