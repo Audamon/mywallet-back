@@ -3,10 +3,10 @@
   "type": "module",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
+  "main": "app.js",
   "scripts": {
-    "start": "NODE_ENV=production NODE_TLS_REJECT_UNAUTHORIZED=0 node app.js",
-    "dev": "NODE_ENV=development npx nodemon app.js",
+    "start": "npx nodemon src/app.js",
+    "dev": "NODE_ENV=development npx nodemon src/app.js",
     "test": "NODE_ENV=test npx jest --watchAll"
   },
   "keywords": [],
@@ -16,7 +16,6 @@
     "bcrypt": "^5.0.1",
     "cors": "^2.8.5",
     "express": "^4.17.1",
-    "faker": "^5.5.3",
     "joi": "^17.4.2",
     "pg": "^8.7.1",
     "uuid": "^8.3.2"
@@ -32,6 +31,7 @@
     "eslint-plugin-import": "^2.25.3",
     "jest": "^27.3.1",
     "prettier": "2.4.1",
+    "faker": "^5.5.3",
     "supertest": "^6.1.6"
   }
 }
