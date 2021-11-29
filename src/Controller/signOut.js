@@ -1,9 +1,9 @@
-import connection from '../database.js';
+import { logOutUser } from '../Services/logOutUser.js';
 
 async function signOut(req, res) {
   const { token } = req.body;
   try {
-    await connection.query('DELETE FROM sessions WHERE token = $1;', [token]);
+    await logOutUser({token})
     return res.sendStatus(200);
   } catch (error) {
     console.log(error);

@@ -1,5 +1,3 @@
-import bcrypt from 'bcrypt';
-import connection from '../database.js';
 import { signUpSchema } from '../Schemas/schemas.js';
 import { createUser } from '../Services/createUser.js';
 
