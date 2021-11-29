@@ -1,6 +1,10 @@
 # MyWallet - Back-end
 
-Wallet app to keep track of transactions, made with `Node`
+Wallet app to keep track of transactions, made with `Node`\
+
+
+# About
+- Dont't know what to write here yet
 
 # How to run 
 
