@@ -7,6 +7,7 @@ import {
 } from '../Factories/factories.js';
 
 const testBody = validBodyFactorySignup();
+console.log(testBody);
 afterAll(async () => {
     await connection.query('delete from customers');
 });
